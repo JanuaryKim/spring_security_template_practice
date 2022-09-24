@@ -1,0 +1,22 @@
+﻿<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <body>
+        <div align="right" th:fragment="header">
+            <a href="/members/register" class="text-decoration-none">회원가입</a> |
+
+            <span sec:authorize="isAuthenticated()"> <!-- 1 -->
+                <sapn sec:authorize="hasRole('USER')"> <!-- 2 -->
+                    <a href="/members/my-page" class="text-decoration-none"> 마이 페이지 | </a>
+
+                </sapn>
+
+
+                <a href="/logout" class="text-decoration-none"> 로그아웃 | </a>
+                <span th:text="${#authentication.name}">홍길동</span>님 <!-- 3 -->
+            </span>
+
+            <a href="/auths/login-form" class="text-decoration-none">로그인</a> |
+            <a href="/members/my-page" class="text-decoration-none">마이페이지</a>
+        </div>
+    </body>
+</html>
